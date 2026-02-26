@@ -92,3 +92,25 @@ Model performance was evaluated using:
 ---
 
 ## 📁 Project Structure  
+CrowdSense/
+│
+├── dataset/
+│ ├── crowded/
+│ └── non_crowded/
+│
+├── hog_feature_extraction.py
+├── train_model.py
+├── predict.py
+├── hog_visualization.py
+├── model.pkl
+└── README.md
+
+
+---
+
+## 🔮 Future Enhancements  
+
+1. Multi-level crowd density classification  
+2. Real-time video stream integration  
+3. Automated alert triggering system  
+4. Comparative study with CNN-based models  
