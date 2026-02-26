@@ -1,62 +1,139 @@
-CrowdSense – Crowd Scene Classification and Alert System
-📌 Project Description
-CrowdSense is a real‑time crowd monitoring system that analyzes video streams to classify scenes as crowded or non‑crowded using classical machine‑learning techniques. The system uses HOG feature extraction with an RBF‑kernel Support Vector Machine and sends Telegram alerts when crowd density exceeds a predefined threshold.
+🧠 CrowdSense
+Crowd Density Classification using HOG and Machine Learning
+📌 Project Overview
+CrowdSense is a classical machine learning–based system designed to classify images or video frames into Crowded and Non-Crowded categories.
 
-🎯 Objectives
-Detect crowded and non‑crowded scenes from video
+The system uses:
 
-Compare multiple machine‑learning models
+HOG (Histogram of Oriented Gradients) for feature extraction
 
-Perform real‑time crowd monitoring
+SVM and other ML classifiers for classification
 
-Trigger alerts for high crowd density
+The goal is to build a lightweight and efficient crowd monitoring solution without deep learning.
 
-🧠 Technologies Used
+🎯 Problem Statement
+To automatically detect and classify crowd density in surveillance images using classical computer vision and machine learning techniques.
+
+🏗️ System Pipeline
+Input Image / Frame
+        ↓
+Preprocessing (Resize + Grayscale + CLAHE)
+        ↓
+HOG Feature Extraction (8100 features)
+        ↓
+Machine Learning Classifier (SVM)
+        ↓
+Crowded / Non-Crowded Prediction
+⚙️ Technologies Used
 Python
 
 OpenCV
 
-Scikit‑learn
+NumPy
 
-Streamlit
+Scikit-learn
 
-Telegram Bot API
+Matplotlib
 
-⚙️ Methodology
-Video frames are extracted from input video
+🔍 Feature Extraction
+HOG Parameters Used:
+Image Size: 128 × 128
 
-Frames are preprocessed using grayscale conversion and CLAHE
+Pixels per Cell: 8 × 8
 
-HOG features are extracted from each frame
+Cells per Block: 2 × 2
 
-Multiple ML models are trained and evaluated
+Orientation Bins: 9
 
-RBF‑SVM is selected as the final model
+Block Normalization: L2-Hys
 
-Continuous crowded frames trigger Telegram alerts
+Feature Vector Size: 8100 per image
 
-📊 Models & Accuracy
-RBF‑SVM – 90% (Selected)
+HOG captures local edge orientation patterns which represent structural information of crowded scenes.
 
-Random Forest – 87%
+🤖 Machine Learning Models Tested
+K-Nearest Neighbors (KNN)
 
-Gradient Boosting – 82%
+Random Forest
 
-KNN – 48%
+Gradient Boosting
 
-🚨 Alert System
-When the number of continuous crowded frames exceeds a fixed threshold, an automated alert is sent to users using the Telegram Bot API for quick response.
+Support Vector Machine (SVM)
 
-📁 Project Files
-app.py – Streamlit frontend
+Final Selected Model:
+✔ RBF-SVM (Best accuracy observed)
 
-backend.py – Video processing logic
+📊 Model Evaluation
+Evaluation metrics used:
 
-hog_extract.py – Feature extraction
+Accuracy
 
-train_*.py – Model training scripts
+Precision
 
-*.pkl – Trained model files
+Recall
 
-✅ Conclusion
-CrowdSense provides a lightweight and efficient solution for crowd monitoring using classical machine‑learning methods. The system is suitable for public safety applications and can be extended for real‑time CCTV deployment.
+F1-Score
+
+Confusion Matrix
+
+🚀 How to Run the Project
+1️⃣ Install Dependencies
+pip install opencv-python numpy scikit-learn matplotlib scikit-image
+2️⃣ Run Training
+python train_model.py
+3️⃣ Run Prediction
+python predict.py
+📁 Project Structure
+CrowdSense/
+│
+├── dataset/
+│   ├── crowded/
+│   └── non_crowded/
+│
+├── hog_feature_extraction.py
+├── train_model.py
+├── predict.py
+├── hog_visualization.py
+├── model.pkl
+└── README.md
+🔬 Technical Highlights
+Uses handcrafted gradient-based features (HOG)
+
+Handles high-dimensional feature space (8100 features)
+
+SVM learns feature importance automatically
+
+Robust to lighting variations using CLAHE
+
+Computationally efficient compared to deep learning
+
+📈 Key Contributions
+Designed preprocessing pipeline (Resize + CLAHE)
+
+Configured optimal HOG parameters
+
+Compared multiple ML classifiers
+
+Selected best-performing model
+
+Implemented complete end-to-end system
+
+⚠️ Limitations
+Binary classification only
+
+Performance depends on dataset quality
+
+Not optimized for extreme occlusion
+
+🔮 Future Improvements
+Multi-level crowd density classification
+
+Real-time video deployment
+
+Integration with IoT alert systems
+
+Comparison with CNN-based approaches
+
+📌 Conclusion
+CrowdSense demonstrates that classical computer vision techniques combined with machine learning can effectively perform crowd density classification in a computationally efficient manner.
+
